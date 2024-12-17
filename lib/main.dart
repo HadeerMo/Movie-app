@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:movie_app/features/splash/presentation/views/splash_view.dart';
 void main() {
   runApp(const MovieApp());
@@ -11,9 +10,9 @@ class MovieApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
+    return const MaterialApp(
       home: SplashView(),
-    
+      debugShowCheckedModeBanner: false,
     );
   }
 }
