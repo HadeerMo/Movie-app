@@ -5,9 +5,10 @@ class SplashViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        
+        Text('Movies',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),)
       ],
     );
   }
