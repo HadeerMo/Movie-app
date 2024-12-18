@@ -1,33 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/features/splash/presentation/views/widgets/sliding_text.dart';
 
-class SplashViewBody extends StatelessWidget {
+class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
 
   @override
+  State<SplashViewBody> createState() => _SplashViewBodyState();
+}
+
+class _SplashViewBodyState extends State<SplashViewBody>
+    with SingleTickerProviderStateMixin {
+  late AnimationController animationController;
+  late Animation<Offset> slidingAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 1),
+    );
+        slidingAnimation = Tween<Offset>(begin: const Offset(0, -7), end: Offset.zero)
+        .animate(animationController);
+    animationController.forward();
+  }
+  @override
+  void dispose() {
+    super.dispose();
+    animationController.dispose();
+  }
+  @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Text(
+        const Text(
           'Movivo',
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: 55,
+            fontSize: 70,
             fontWeight: FontWeight.bold,
-            color: Color.fromARGB(255, 240, 205, 9),
+            color: Colors.white,
             fontFamily: 'Source_Code_Pro',
           ),
         ),
-        Text(
-          '\'\'Discover Your Next Favorite Movie\'\'',
-          style: TextStyle(
-            fontSize: 12,
-            color: Colors.white,
-          ),
-          textAlign: TextAlign.center,
-        ),
+        SlidingText(slidingAnimation: slidingAnimation),
       ],
     );
   }
 }
+
+
