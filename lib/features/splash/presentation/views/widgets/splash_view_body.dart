@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:movie_app/core/widgets/text_logo.dart';
 import 'package:movie_app/features/home/presentation/views/home_view.dart';
 import 'package:movie_app/features/splash/presentation/views/widgets/sliding_text.dart';
 
@@ -21,7 +22,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
     initSlidingAnimation();
     navigateToHome();
   }
-  
+
   @override
   void dispose() {
     super.dispose();
@@ -34,16 +35,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        const Text(
-          'Movivo',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 70,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-            fontFamily: 'Source_Code_Pro',
-          ),
-        ),
+        const TextLogo(fontSize: 70,),
         SlidingText(slidingAnimation: slidingAnimation),
       ],
     );
@@ -61,7 +53,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
   }
 
   void navigateToHome() {
-      Future.delayed(const Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 2), () {
       // Navigator.pushReplacementNamed(context, HomeView.id);
       Get.to(
         () => const HomeView(),
@@ -71,3 +63,5 @@ class _SplashViewBodyState extends State<SplashViewBody>
     });
   }
 }
+
+

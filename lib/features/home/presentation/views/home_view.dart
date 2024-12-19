@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/features/home/presentation/views/widgets/home_view_body.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
   static String id = 'Home';
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return const SafeArea(
         child: Scaffold(
-      body: Text(''),
+      body: HomeViewBody(),
     ));
   }
 }
