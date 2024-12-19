@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/features/home/presentation/views/widgets/custom_featured_list_view_item.dart';
+import 'package:movie_app/features/home/presentation/views/widgets/featured_list_view.dart';
 import 'package:movie_app/features/home/presentation/views/widgets/home_custom_appbar.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -10,10 +10,9 @@ class HomeViewBody extends StatelessWidget {
     return const Column(
       children: [
         HomeCustomAppBar(),
-        CustomFeaturedListViewItem()
+        FeaturedListView(),
       ],
     );
   }
 }
-
 
