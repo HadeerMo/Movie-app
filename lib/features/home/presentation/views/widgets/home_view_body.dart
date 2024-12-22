@@ -16,9 +16,33 @@ class HomeViewBody extends StatelessWidget {
           HomeCustomAppBar(),
           FeaturedListView(),
           SizedBox(height: 40,),
-          Text('Best Seller',style: Styles.titleMediam,)
+          Text('Best Seller',style: Styles.titleMediam,),
+          BestSellerListViewItem()
         ],
       ),
+    );
+  }
+}
+
+class BestSellerListViewItem extends StatelessWidget {
+  const BestSellerListViewItem({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Container(
+          height: 114,
+          width: 71,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8),
+            image: const DecorationImage(
+              image: NetworkImage('https://m.media-amazon.com/images/M/MV5BY2RjN2M3NmMtNGJhZS00NGEwLWE4NTktOGQ5MDQ4MjZlZGJmXkEyXkFqcGdeQXVyMTkzODUwNzk@._V1_UY268_CR1,0,182,268_AL_.jpg'),
+              fit: BoxFit.fill
+              ),
+          ),
+        ),
+      ],
     );
   }
 }
