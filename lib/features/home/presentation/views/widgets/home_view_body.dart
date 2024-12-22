@@ -8,9 +8,9 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left:18,),
-      child: const Column(
+    return const Padding(
+      padding: EdgeInsets.only(left:18,),
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           HomeCustomAppBar(),
