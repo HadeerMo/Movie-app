@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:movie_app/constants.dart';
 import 'package:movie_app/core/utils/styles.dart';
 import 'package:movie_app/features/home/presentation/views/widgets/best_seller_item.dart';
@@ -10,30 +11,37 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.only(
+    return Padding(
+      padding: const EdgeInsets.only(
         left: 18,
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          HomeCustomAppBar(),
-          FeaturedListView(),
-          SizedBox(
-            height: 40,
-          ),
-          Text(
-            'Best Seller',
-            style: Styles.textStyle18,
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          BestSellerListViewItem()
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const HomeCustomAppBar(),
+            const FeaturedListView(),
+            const SizedBox(
+              height: 40,
+            ),
+            const Text(
+              'Best Seller',
+              style: Styles.textStyle18,
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: 10,
+              itemBuilder: (context, index) {
+                return const BestSellerListViewItem();
+              },
+            )
+          ],
+        ),
       ),
     );
   }
 }
-
-
