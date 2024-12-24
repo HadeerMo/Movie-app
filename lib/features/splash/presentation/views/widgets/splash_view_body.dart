@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
+import 'package:movie_app/core/utils/app_router.dart';
 import 'package:movie_app/core/widgets/text_logo.dart';
 import 'package:movie_app/features/home/presentation/views/home_view.dart';
 import 'package:movie_app/features/splash/presentation/views/widgets/sliding_text.dart';
@@ -35,7 +36,9 @@ class _SplashViewBodyState extends State<SplashViewBody>
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        const TextLogo(fontSize: 70,),
+        const TextLogo(
+          fontSize: 70,
+        ),
         SlidingText(slidingAnimation: slidingAnimation),
       ],
     );
@@ -53,15 +56,12 @@ class _SplashViewBodyState extends State<SplashViewBody>
   }
 
   void navigateToHome() {
-    Future.delayed(const Duration(seconds: 2), () {
-      // Navigator.pushReplacementNamed(context, HomeView.id);
-      Get.to(
-        () => const HomeView(),
-        transition: Transition.fade,
-        duration: const Duration(seconds: 1),
-      );
-    });
+    Future.delayed(
+      const Duration(seconds: 2),
+      () {
+        // Navigator.pushReplacementNamed(context, HomeView.id);
+        GoRouter.of(context).push(AppRouter.homePath);
+      },
+    );
   }
 }
-
-

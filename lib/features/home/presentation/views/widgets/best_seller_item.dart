@@ -9,7 +9,7 @@ class BestSellerListViewItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 16),
+      padding: const EdgeInsets.only(bottom: 20),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -27,39 +27,52 @@ class BestSellerListViewItem extends StatelessWidget {
           const SizedBox(
             width: 30,
           ),
-           Expanded(
-             child: Column(
+          Expanded(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  width: MediaQuery.of(context).size.width * .5,
+                  width: MediaQuery.of(context).size.width * .6,
                   child: Text(
                     'Harry Potter and the Goblet of Fire',
-                    style: Styles.textStyle20.copyWith(fontFamily: kGtSectraFine),
+                    style:
+                        Styles.textStyle20.copyWith(fontFamily: kGtSectraFine),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
-                const SizedBox(height: 3,),
-                const Text('J.K. Rowling',style: Styles.textStyle14,),
-                const SizedBox(height: 3,),
-                 Row(
+                const SizedBox(
+                  height: 3,
+                ),
+                const Text(
+                  'J.K. Rowling',
+                  style: Styles.textStyle14,
+                ),
+                const SizedBox(
+                  height: 3,
+                ),
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('19.99 €',style: Styles.textStyle20.copyWith(fontWeight: FontWeight.bold),),
-                    const SizedBox(width: 10,),
+                    Text(
+                      '19.99 €',
+                      style: Styles.textStyle20
+                          .copyWith(fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
                     const MovieRate()
                   ],
-                               )
+                )
               ],
-                     ),
-           ),
-           const SizedBox(width: 35,),
-      
-      
+            ),
+          ),
+          // const SizedBox(
+          //   width: 35,
+          // ),
         ],
       ),
     );
   }
 }
-
