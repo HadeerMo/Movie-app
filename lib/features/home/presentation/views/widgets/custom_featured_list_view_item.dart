@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:movie_app/core/utils/app_router.dart';
+import 'package:movie_app/features/home/presentation/views/widgets/custom_movie_image.dart';
 
 class CustomFeaturedListViewItem extends StatelessWidget {
   const CustomFeaturedListViewItem({
@@ -7,31 +10,24 @@ class CustomFeaturedListViewItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        AspectRatio(
-          aspectRatio: 2.7 / 4,
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(14),
-              image: const DecorationImage(
-                fit: BoxFit.fill,
-                image: NetworkImage(
-                    'https://m.media-amazon.com/images/M/MV5BY2RjN2M3NmMtNGJhZS00NGEwLWE4NTktOGQ5MDQ4MjZlZGJmXkEyXkFqcGdeQXVyMTkzODUwNzk@._V1_UY268_CR1,0,182,268_AL_.jpg'),
-              ),
+    return GestureDetector(
+      onTap: () {
+        GoRouter.of(context).push(AppRouter.detailsPath);
+      },
+      child: const Stack(
+        children: [
+          CustomMovieImage(),
+          Positioned(
+            bottom: 7,
+            right: 7,
+            child: Icon(
+              Icons.play_circle_outline,
+              color: Color.fromARGB(255, 182, 181, 181),
+              size: 40,
             ),
-          ),
-        ),
-        const Positioned(
-          bottom: 7,
-          right: 7,
-          child: Icon(
-            Icons.play_circle_outline,
-            color: Color.fromARGB(255, 182, 181, 181),
-            size: 40,
-          ),
-        )
-      ],
+          )
+        ],
+      ),
     );
   }
 }

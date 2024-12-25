@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_app/core/utils/app_router.dart';
 import 'package:movie_app/core/widgets/text_logo.dart';
-import 'package:movie_app/features/home/presentation/views/home_view.dart';
 import 'package:movie_app/features/splash/presentation/views/widgets/sliding_text.dart';
 
 class SplashViewBody extends StatefulWidget {

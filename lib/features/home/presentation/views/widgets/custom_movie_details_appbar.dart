@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomAppbarForDetails extends StatelessWidget {
   const CustomAppbarForDetails({
@@ -13,12 +14,20 @@ class CustomAppbarForDetails extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.close,color: Colors.white,),
+            onPressed: () {
+              GoRouter.of(context).pop();
+            },
+            icon: const Icon(
+              Icons.close,
+              color: Colors.white,
+            ),
           ),
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.shopping_cart,color: Colors.white,),
+            icon: const Icon(
+              Icons.download,
+              color: Colors.white,
+            ),
           ),
         ],
       ),

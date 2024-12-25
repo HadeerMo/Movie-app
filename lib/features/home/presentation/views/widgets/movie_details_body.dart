@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/features/home/presentation/views/widgets/custom_Movie_details_appbar.dart';
+import 'package:movie_app/features/home/presentation/views/widgets/custom_movie_details_appbar.dart';
+import 'package:movie_app/features/home/presentation/views/widgets/custom_movie_image.dart';
 
 class MovieDetailsBody extends StatelessWidget {
   const MovieDetailsBody({super.key});
@@ -11,6 +12,7 @@ class MovieDetailsBody extends StatelessWidget {
       child: Column(
         children: [
           CustomAppbarForDetails(),
+          CustomMovieImage(),
         ],
       ),
     );
