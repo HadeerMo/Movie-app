@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/core/utils/styles.dart';
 import 'package:movie_app/features/home/presentation/views/widgets/custom_movie_details_appbar.dart';
 import 'package:movie_app/features/home/presentation/views/widgets/custom_movie_image.dart';
+import 'package:movie_app/features/home/presentation/views/widgets/movie_rating.dart';
 
 class MovieDetailsBody extends StatelessWidget {
   const MovieDetailsBody({super.key});
@@ -33,7 +34,11 @@ class MovieDetailsBody extends StatelessWidget {
               'Rudyard Kipling',
               style: Styles.textStyle16.copyWith(fontStyle: FontStyle.italic,fontWeight: FontWeight.bold),
             ),
-          )
+          ),
+          const SizedBox(
+            height: 12,
+          ),
+          const MovieRate(mainAxisAlignment: MainAxisAlignment.center,)
         ],
       ),
     );
