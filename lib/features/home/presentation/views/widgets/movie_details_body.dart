@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/utils/styles.dart';
+import 'package:movie_app/features/home/presentation/views/widgets/book_action.dart';
 import 'package:movie_app/features/home/presentation/views/widgets/custom_movie_details_appbar.dart';
 import 'package:movie_app/features/home/presentation/views/widgets/custom_movie_image.dart';
 import 'package:movie_app/features/home/presentation/views/widgets/movie_rating.dart';
@@ -38,7 +39,11 @@ class MovieDetailsBody extends StatelessWidget {
           const SizedBox(
             height: 12,
           ),
-          const MovieRate(mainAxisAlignment: MainAxisAlignment.center,)
+          const MovieRate(mainAxisAlignment: MainAxisAlignment.center,),
+          const SizedBox(
+            height: 30,
+          ),
+          const BookAction(),
         ],
       ),
     );
