@@ -5,8 +5,8 @@ import 'package:movie_app/core/utils/app_router.dart';
 import 'package:movie_app/core/utils/styles.dart';
 import 'package:movie_app/features/home/presentation/views/widgets/movie_rating.dart';
 
-class BestSellerListViewItem extends StatelessWidget {
-  const BestSellerListViewItem({super.key});
+class MovieListViewItem extends StatelessWidget {
+  const MovieListViewItem({super.key});
 
   @override
   Widget build(BuildContext context) {

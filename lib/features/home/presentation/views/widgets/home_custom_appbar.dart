@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
+import 'package:movie_app/core/utils/app_router.dart';
 import 'package:movie_app/core/widgets/text_logo.dart';
 
 class HomeCustomAppBar extends StatelessWidget {
@@ -18,7 +20,9 @@ class HomeCustomAppBar extends StatelessWidget {
             fontSize: 20,
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              GoRouter.of(context).push(AppRouter.searchPath);
+            },
             icon: const Icon(
               FontAwesomeIcons.magnifyingGlass,
               color: Colors.white,

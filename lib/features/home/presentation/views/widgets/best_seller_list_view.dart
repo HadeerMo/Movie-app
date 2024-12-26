@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/features/home/presentation/views/widgets/best_seller_item.dart';
+import 'package:movie_app/features/home/presentation/views/widgets/movie_item.dart';
 
 class BestSellerList extends StatelessWidget {
   const BestSellerList({
@@ -11,9 +11,9 @@ class BestSellerList extends StatelessWidget {
     return ListView.builder(
       padding: EdgeInsets.zero,
       physics: const NeverScrollableScrollPhysics(),
-      itemCount: 10,
+      itemCount: 20,
       itemBuilder: (context, index) {
-        return const BestSellerListViewItem();
+        return const MovieListViewItem();
       },
     );
   }
