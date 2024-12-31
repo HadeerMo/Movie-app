@@ -32,6 +32,8 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
     return movies;
   }
 
+  
+
   List<MovieEntity> getMoviesList(Map<String, dynamic> data) {
     List<MovieEntity> movies = [];
     for (var movie in data["results"]) {
