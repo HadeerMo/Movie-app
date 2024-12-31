@@ -30,8 +30,7 @@ class MovieDetailsSection extends StatelessWidget {
           child: Text(
             'Rudyard Kipling',
             style: Styles.textStyle16.copyWith(
-                fontStyle: FontStyle.italic,
-                fontWeight: FontWeight.bold),
+                fontStyle: FontStyle.italic, fontWeight: FontWeight.bold),
           ),
         ),
       ],

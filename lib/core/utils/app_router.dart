@@ -18,11 +18,11 @@ abstract class AppRouter {
         path: homePath,
         builder: (context, state) => const HomeView(),
       ),
-        GoRoute(
+      GoRoute(
         path: detailsPath,
         builder: (context, state) => const MovieDetailsView(),
       ),
-        GoRoute(
+      GoRoute(
         path: searchPath,
         builder: (context, state) => const SearchView(),
       ),

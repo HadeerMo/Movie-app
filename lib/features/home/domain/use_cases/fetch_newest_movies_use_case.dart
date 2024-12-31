@@ -1,4 +1,3 @@
-
 import 'package:dartz/dartz.dart';
 import 'package:movie_app/core/error/failure.dart';
 import 'package:movie_app/core/use_cases/use_case.dart';
@@ -11,8 +10,9 @@ class FetchNewestMoviesUseCase extends UseCase<List<MovieEntity>, NoParam> {
   FetchNewestMoviesUseCase(this.homeRepo);
 
   @override
-  Future<Either<Failure, List<MovieEntity>>> call ([NoParam? param]) async { //optinal paramter
-  
+  Future<Either<Failure, List<MovieEntity>>> call([NoParam? param]) async {
+    //optinal paramter
+
     return await homeRepo.fetchNewsMovies();
   }
 

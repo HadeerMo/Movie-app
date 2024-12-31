@@ -30,7 +30,8 @@ class MovieDetailsBody extends StatelessWidget {
                   height: 30,
                 ),
                 BookAction(),
-                Expanded( //to let MoreMovieListView always in the bottom..
+                Expanded(
+                  //to let MoreMovieListView always in the bottom..
                   child: SizedBox(
                     height: 30,
                   ),
@@ -47,6 +48,3 @@ class MovieDetailsBody extends StatelessWidget {
     );
   }
 }
-
-
-

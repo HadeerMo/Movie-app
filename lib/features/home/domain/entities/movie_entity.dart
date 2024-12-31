@@ -1,15 +1,17 @@
 class MovieEntity {
-  final String image;
-  final String title;
-  final String autherName;
-  final num price;
-  final num rating;
+  final String id;
+  final String? image;
+  final String movieTitle;
+  final List<String>? kind;
+  final int? releasedYear;
+  final double? rating;
 
-  MovieEntity(
-    this.image,
-    this.title,
-    this.autherName,
-    this.price,
-    this.rating,
-  );
+  MovieEntity({
+    required this.id,
+    required this.image,
+    required this.movieTitle,
+    required this.kind,
+    required this.releasedYear,
+    required this.rating,
+  });
 }

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:movie_app/features/home/presentation/views/widgets/movie_item.dart';
 
@@ -10,11 +9,11 @@ class SearchResultListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-          padding: EdgeInsets.zero,
-          itemCount: 10,
-          itemBuilder: (context, index) {
-            return const MovieListViewItem();
-          },
-        );
+      padding: EdgeInsets.zero,
+      itemCount: 10,
+      itemBuilder: (context, index) {
+        return const MovieListViewItem();
+      },
+    );
   }
 }

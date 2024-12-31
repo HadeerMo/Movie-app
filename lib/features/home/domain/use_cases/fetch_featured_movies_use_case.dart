@@ -10,8 +10,9 @@ class FetchFeaturedMoviesUseCase extends UseCase<List<MovieEntity>, NoParam> {
   FetchFeaturedMoviesUseCase(this.homeRepo);
 
   @override
-  Future<Either<Failure, List<MovieEntity>>> call ([NoParam? param]) async { //optinal paramter
-  
+  Future<Either<Failure, List<MovieEntity>>> call([NoParam? param]) async {
+    //optinal paramter
+
     return await homeRepo.fetchFeaturedMovies();
   }
 
