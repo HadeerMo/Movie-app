@@ -1,4 +1,7 @@
+import 'package:hive/hive.dart';
+import 'package:movie_app/constants.dart';
 import 'package:movie_app/core/utils/api_service.dart';
+import 'package:movie_app/core/utils/functions/save_box.dart';
 import 'package:movie_app/features/home/data/models/movie_model/movie_model.dart';
 import 'package:movie_app/features/home/domain/entities/movie_entity.dart';
 
@@ -20,6 +23,7 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
             'advancedsearch?start_year=1970&end_year=2020&min_imdb=1&max_imdb=10&language=english&sort=latest&page=1');
 
     List<MovieEntity> movies = getMoviesList(data);
+    saveBoxData(movies, KfeaturedBox);
     return movies;
   }
 
@@ -32,8 +36,6 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
     return movies;
   }
 
-  
-
   List<MovieEntity> getMoviesList(Map<String, dynamic> data) {
     List<MovieEntity> movies = [];
     for (var movie in data["results"]) {
@@ -42,4 +44,6 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
     }
     return movies;
   }
+
+
 }
