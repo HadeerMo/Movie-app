@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive/hive.dart';
 import 'package:movie_app/constants.dart';
 import 'package:movie_app/core/utils/app_router.dart';
-import 'package:movie_app/features/home/presentation/views/home_view.dart';
-import 'package:movie_app/features/splash/presentation/views/splash_view.dart';
+import 'package:movie_app/features/home/domain/entities/movie_entity.dart';
 
-void main() {
+void main() async{
   runApp(const MovieApp());
+  Hive.registerAdapter(MovieEntityAdapter());
+  await Hive.openBox(KfeaturedBox);
 }
 
 class MovieApp extends StatelessWidget {
