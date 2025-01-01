@@ -23,7 +23,7 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
             'advancedsearch?start_year=1970&end_year=2020&min_imdb=1&max_imdb=10&language=english&sort=latest&page=1');
 
     List<MovieEntity> movies = getMoviesList(data);
-    saveBoxData(movies, KfeaturedBox);
+    saveBoxData(movies, kfeaturedBox);
     return movies;
   }
 
@@ -33,6 +33,7 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
         endPoint:
             'advancedsearch?start_year=2020&end_year=2020&min_imdb=1&max_imdb=10&language=english&sort=latest&page=1');
     List<MovieEntity> movies = getMoviesList(data);
+    saveBoxData(movies, kNewestBox);
     return movies;
   }
 
