@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:movie_app/core/error/failure.dart';
 import 'package:movie_app/features/home/data/data_sources/home_local_data_source.dart';
 import 'package:movie_app/features/home/data/data_sources/home_remote_data_source.dart';
@@ -15,28 +16,36 @@ class HomeRepoImpl extends HomeRepo {
   @override
   Future<Either<Failure, List<MovieEntity>>> fetchFeaturedMovies() async {
     try {
-      var cachedMovies = homeLocalDataSource.fetchFeaturedMovies();
-      if (cachedMovies.isNotEmpty) {
-        return Right(cachedMovies);
+      List<MovieEntity> movies;
+      movies = homeLocalDataSource.fetchFeaturedMovies();
+      if (movies.isNotEmpty) {
+        return Right(movies);
       }
-      var movies = await homeRemoteDataSource.fetchFeaturedMovies();
+      movies = await homeRemoteDataSource.fetchFeaturedMovies();
       return Right(movies);
     } on Exception catch (e) {
-      return Left(Failure());
+      if (e is DioException) {
+        return Left(ServerFailure.fromDioError(e));
+      }
+      return Left(ServerFailure(msg: e.toString()));
     }
   }
 
   @override
-  Future<Either<Failure, List<MovieEntity>>> fetchNewsMovies() async{
+  Future<Either<Failure, List<MovieEntity>>> fetchNewsMovies() async {
     try {
-      var cachedMovies = homeLocalDataSource.fetchNewsMovies();
-      if (cachedMovies.isNotEmpty) {
-        return Right(cachedMovies);
+      List<MovieEntity> movies;
+      movies = homeLocalDataSource.fetchNewsMovies();
+      if (movies.isNotEmpty) {
+        return Right(movies);
       }
-      var movies = await homeRemoteDataSource.fetchNewsMovies();
+      movies = await homeRemoteDataSource.fetchNewsMovies();
       return Right(movies);
     } on Exception catch (e) {
-      return Left(Failure());
+      if (e is DioException) {
+        return Left(ServerFailure.fromDioError(e));
+      }
+      return Left(ServerFailure(msg: e.toString()));
     }
   }
 }
