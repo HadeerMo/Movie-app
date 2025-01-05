@@ -1,9 +1,29 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import 'package:movie_app/features/home/domain/entities/movie_entity.dart';
+import 'package:movie_app/features/home/domain/use_cases/fetch_featured_movies_use_case.dart';
 
 part 'featured_movies_state.dart';
 
 class FeaturedMoviesCubit extends Cubit<FeaturedMoviesState> {
-  FeaturedMoviesCubit() : super(FeaturedMoviesInitial());
+  FeaturedMoviesCubit(this.featuredMoviesUseCase)
+      : super(FeaturedMoviesInitial());
+
+  final FetchFeaturedMoviesUseCase featuredMoviesUseCase;
+
+  Future<void> fetchFeaturedMovies() async {
+    emit(FeaturedMoviesLoading());
+
+    var result = await featuredMoviesUseCase.call();
+
+    result.fold((failure) {
+      emit(
+        FeaturedMoviesFailure(errMsg: failure.msg),
+      );
+    }, (movies) {
+      emit(
+        FeaturedMoviesSuccess(movies: movies),
+      );
+    });
+  }
 }
