@@ -1,4 +1,3 @@
-import 'package:hive/hive.dart';
 import 'package:movie_app/constants.dart';
 import 'package:movie_app/core/utils/api_service.dart';
 import 'package:movie_app/core/utils/functions/save_box.dart';
