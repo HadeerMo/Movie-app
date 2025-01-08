@@ -5,6 +5,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:movie_app/constants.dart';
 import 'package:movie_app/core/utils/app_router.dart';
 import 'package:movie_app/core/utils/functions/setup_service_locator.dart';
+import 'package:movie_app/core/utils/simple_bloc_observer.dart';
 import 'package:movie_app/features/home/data/repos/home_repo_impl.dart';
 import 'package:movie_app/features/home/domain/entities/movie_entity.dart';
 import 'package:movie_app/features/home/domain/use_cases/fetch_featured_movies_use_case.dart';
@@ -18,9 +19,9 @@ void main() async {
   setupServiceLocator();
   await Hive.openBox<MovieEntity>(kfeaturedBox);
   await Hive.openBox<MovieEntity>(kNewestBox);
+  Bloc.observer = SimpleBlocObserver();
   runApp(const MovieApp());
 }
-
 
 class MovieApp extends StatelessWidget {
   const MovieApp({super.key});
