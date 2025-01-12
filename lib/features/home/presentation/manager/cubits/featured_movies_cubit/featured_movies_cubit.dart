@@ -11,10 +11,10 @@ class FeaturedMoviesCubit extends Cubit<FeaturedMoviesState> {
 
   final FetchFeaturedMoviesUseCase featuredMoviesUseCase;
 
-  Future<void> fetchFeaturedMovies() async {
+  Future<void> fetchFeaturedMovies({int pageNum = 1}) async {
     emit(FeaturedMoviesLoading());
 
-    var result = await featuredMoviesUseCase.call();
+    var result = await featuredMoviesUseCase.call(pageNum);
 
     result.fold((failure) {
       emit(

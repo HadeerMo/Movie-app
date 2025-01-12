@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_app/constants.dart';
@@ -20,17 +21,31 @@ class MovieListViewItem extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
+            SizedBox(
               height: 114,
               width: 71,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                image: DecorationImage(
-                    image: NetworkImage(
-                        movie.image!),
-                    fit: BoxFit.fill),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(14),
+                child: CachedNetworkImage(
+                  imageUrl: movie.image ?? kimageNotFound,
+                  fit: BoxFit.fill,
+                  // errorWidget: (context, url, error) {
+                  //   return Container(
+                  //     height: 114,
+                  //     width: 71,
+                  //     decoration: const BoxDecoration(
+                  //       image: DecorationImage(
+                  //         fit: BoxFit.fill,
+                  //         image: AssetImage(
+                  //             kimageNotFound),
+                  //       ),
+                  //     ),
+                  //   );
+                  // },
+                ),
               ),
             ),
+
             const SizedBox(
               width: 30,
             ),
@@ -73,7 +88,9 @@ class MovieListViewItem extends StatelessWidget {
                       const SizedBox(
                         width: 10,
                       ),
-                      MovieRate(rate: movie.rating??0,)
+                      MovieRate(
+                        rate: movie.rating ?? 0,
+                      )
                     ],
                   )
                 ],

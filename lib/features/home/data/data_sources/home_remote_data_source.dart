@@ -5,7 +5,7 @@ import 'package:movie_app/features/home/data/models/movie_model/movie_model.dart
 import 'package:movie_app/features/home/domain/entities/movie_entity.dart';
 
 abstract class HomeRemoteDataSource {
-  Future<List<MovieEntity>> fetchFeaturedMovies(); //unimplemented method
+  Future<List<MovieEntity>> fetchFeaturedMovies({int pageNum = 1}); //unimplemented method
 
   Future<List<MovieEntity>> fetchNewsMovies(); //unimplemented method
 }
@@ -16,10 +16,10 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
   HomeRemoteDataSourceImpl(this.apiService);
 
   @override
-  Future<List<MovieEntity>> fetchFeaturedMovies() async {
+  Future<List<MovieEntity>> fetchFeaturedMovies({int pageNum =1}) async {
     var data = await apiService.get(
         endPoint:
-            'advancedsearch?start_year=1970&end_year=2019&min_imdb=1&max_imdb=10&language=english&sort=latest&page=1');
+            'advancedsearch?start_year=1970&end_year=2019&min_imdb=1&max_imdb=10&language=english&sort=latest&page=$pageNum');
 
     List<MovieEntity> movies = getMoviesList(data);
     saveBoxData(movies, kfeaturedBox);
