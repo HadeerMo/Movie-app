@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/features/home/domain/entities/movie_entity.dart';
 import 'package:movie_app/features/home/presentation/views/widgets/movie_item.dart';
 
-class BestSellerList extends StatelessWidget {
-  const BestSellerList({
-    super.key,
+class NewestMoviesList extends StatelessWidget {
+  const NewestMoviesList({
+    super.key, required this.movies,
   });
-
+  final List<MovieEntity> movies;
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
       padding: EdgeInsets.zero,
       physics: const NeverScrollableScrollPhysics(),
-      itemCount: 20,
+      itemCount: movies.length,
       itemBuilder: (context, index) {
-        return const MovieListViewItem();
+        return MovieListViewItem(movie: movies[index],);
       },
     );
   }

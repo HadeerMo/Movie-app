@@ -13,7 +13,8 @@ class MovieDetailsSection extends StatelessWidget {
       children: [
         SizedBox(
           height: MediaQuery.of(context).size.height * .35,
-          child: const CustomMovieImage(),
+          child: Text('data')
+          //  const CustomMovieImage(),
         ),
         const SizedBox(
           height: 25,

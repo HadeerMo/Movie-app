@@ -5,9 +5,10 @@ import 'package:movie_app/core/utils/styles.dart';
 class MovieRate extends StatelessWidget {
   const MovieRate({
     super.key,
-    this.mainAxisAlignment = MainAxisAlignment.start,
+    this.mainAxisAlignment = MainAxisAlignment.start, required this.rate,
   });
   final MainAxisAlignment mainAxisAlignment;
+  final double rate;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -21,20 +22,20 @@ class MovieRate extends StatelessWidget {
         const SizedBox(
           width: 6.3,
         ),
-        const Text(
-          '4.8',
+        Text(
+          rate.toString(),
           style: Styles.textStyle16,
         ),
         const SizedBox(
           width: 5,
         ),
-        Opacity(
-          opacity: .7,
-          child: Text(
-            '(254)',
-            style: Styles.textStyle14.copyWith(fontWeight: FontWeight.bold),
-          ),
-        )
+        // Opacity(
+        //   opacity: .7,
+        //   child: Text(
+        //     '(254)',
+        //     style: Styles.textStyle14.copyWith(fontWeight: FontWeight.bold),
+        //   ),
+        // )
       ],
     );
   }

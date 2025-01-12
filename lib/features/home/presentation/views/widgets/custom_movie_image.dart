@@ -1,24 +1,21 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_app/features/home/domain/entities/movie_entity.dart';
 
 class CustomMovieImage extends StatelessWidget {
-  const CustomMovieImage({
-    super.key,
-  });
-
+  const CustomMovieImage({super.key, required this.movie});
+  final MovieEntity movie;
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 2.7 / 4,
-      child: Container(
-        decoration: BoxDecoration(
+        aspectRatio: 2.7 / 4,
+        child: ClipRRect(
           borderRadius: BorderRadius.circular(14),
-          image: const DecorationImage(
+          child: CachedNetworkImage(
+            imageUrl: movie.image ?? '',
             fit: BoxFit.fill,
-            image: NetworkImage(
-                'https://m.media-amazon.com/images/M/MV5BY2RjN2M3NmMtNGJhZS00NGEwLWE4NTktOGQ5MDQ4MjZlZGJmXkEyXkFqcGdeQXVyMTkzODUwNzk@._V1_UY268_CR1,0,182,268_AL_.jpg'),
           ),
         ),
-      ),
-    );
+        );
   }
 }

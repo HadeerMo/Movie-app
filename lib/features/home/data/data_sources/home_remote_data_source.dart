@@ -19,7 +19,7 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
   Future<List<MovieEntity>> fetchFeaturedMovies() async {
     var data = await apiService.get(
         endPoint:
-            'advancedsearch?start_year=1970&end_year=2020&min_imdb=1&max_imdb=10&language=english&sort=latest&page=1');
+            'advancedsearch?start_year=1970&end_year=2019&min_imdb=1&max_imdb=10&language=english&sort=latest&page=1');
 
     List<MovieEntity> movies = getMoviesList(data);
     saveBoxData(movies, kfeaturedBox);
@@ -44,6 +44,4 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
     }
     return movies;
   }
-
-
 }

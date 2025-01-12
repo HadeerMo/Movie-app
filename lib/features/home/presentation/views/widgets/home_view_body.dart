@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/utils/styles.dart';
-import 'package:movie_app/features/home/presentation/views/widgets/best_seller_list_view.dart';
-import 'package:movie_app/features/home/presentation/views/widgets/featured_list_view.dart';
+import 'package:movie_app/features/home/presentation/views/widgets/featured_list_view_bloc_builder.dart';
 import 'package:movie_app/features/home/presentation/views/widgets/home_custom_appbar.dart';
+import 'package:movie_app/features/home/presentation/views/widgets/newest_movies_list_view_builder.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
@@ -10,6 +10,7 @@ class HomeViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const CustomScrollView(
+      physics: BouncingScrollPhysics(),
       slivers: [
         SliverToBoxAdapter(
           child: Padding(
@@ -20,12 +21,12 @@ class HomeViewBody extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 HomeCustomAppBar(),
-                FeaturedListView(),
+                FeaturedListViewBlocBuilder(),
                 SizedBox(
                   height: 40,
                 ),
                 Text(
-                  'Best Seller',
+                  'Newest Movies',
                   style: Styles.textStyle18,
                 ),
                 SizedBox(
@@ -38,9 +39,14 @@ class HomeViewBody extends StatelessWidget {
         SliverFillRemaining(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 18),
-            child: BestSellerList(),
+            child: NewestMoviesListBlocBuilder(),
           ),
         ),
+        // SliverToBoxAdapter(
+        //   child: SizedBox(
+        //           height:30,
+        //         ),
+        // )
       ],
     );
   }

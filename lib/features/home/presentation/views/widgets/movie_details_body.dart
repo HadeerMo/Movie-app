@@ -25,6 +25,7 @@ class MovieDetailsBody extends StatelessWidget {
                 ),
                 MovieRate(
                   mainAxisAlignment: MainAxisAlignment.center,
+                  rate: 0,
                 ),
                 SizedBox(
                   height: 30,

@@ -3,11 +3,12 @@ import 'package:go_router/go_router.dart';
 import 'package:movie_app/constants.dart';
 import 'package:movie_app/core/utils/app_router.dart';
 import 'package:movie_app/core/utils/styles.dart';
+import 'package:movie_app/features/home/domain/entities/movie_entity.dart';
 import 'package:movie_app/features/home/presentation/views/widgets/movie_rating.dart';
 
 class MovieListViewItem extends StatelessWidget {
-  const MovieListViewItem({super.key});
-
+  const MovieListViewItem({super.key, required this.movie});
+  final MovieEntity movie;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -24,9 +25,9 @@ class MovieListViewItem extends StatelessWidget {
               width: 71,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                image: const DecorationImage(
+                image: DecorationImage(
                     image: NetworkImage(
-                        'https://m.media-amazon.com/images/M/MV5BY2RjN2M3NmMtNGJhZS00NGEwLWE4NTktOGQ5MDQ4MjZlZGJmXkEyXkFqcGdeQXVyMTkzODUwNzk@._V1_UY268_CR1,0,182,268_AL_.jpg'),
+                        movie.image!),
                     fit: BoxFit.fill),
               ),
             ),
@@ -40,7 +41,7 @@ class MovieListViewItem extends StatelessWidget {
                   SizedBox(
                     width: MediaQuery.of(context).size.width * .6,
                     child: Text(
-                      'Harry Potter and the Goblet of Fire',
+                      movie.movieTitle,
                       style: Styles.textStyle20
                           .copyWith(fontFamily: kGtSectraFine),
                       maxLines: 2,
@@ -50,10 +51,14 @@ class MovieListViewItem extends StatelessWidget {
                   const SizedBox(
                     height: 3,
                   ),
-                  const Text(
-                    'J.K. Rowling',
-                    style: Styles.textStyle14,
-                  ),
+                  // ListView.builder(
+                  //   scrollDirection: Axis.horizontal,
+                  //   itemCount: movie.kind!.length,
+                  //   itemBuilder: (context, index) {
+                  //     return Text('${movie.kind![index]}, ');
+                  //   },
+                  // ),
+                  Text(movie.kind![0]),
                   const SizedBox(
                     height: 3,
                   ),
@@ -61,14 +66,14 @@ class MovieListViewItem extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '19.99 €',
-                        style: Styles.textStyle20
+                        movie.releasedYear.toString(),
+                        style: Styles.textStyle18
                             .copyWith(fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(
                         width: 10,
                       ),
-                      const MovieRate()
+                      MovieRate(rate: movie.rating??0,)
                     ],
                   )
                 ],

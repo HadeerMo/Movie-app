@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/features/home/domain/entities/movie_entity.dart';
 import 'package:movie_app/features/home/presentation/views/widgets/custom_movie_image.dart';
 
 class MoreMovieListView extends StatelessWidget {
@@ -15,7 +16,8 @@ class MoreMovieListView extends StatelessWidget {
           itemBuilder: (context, index) {
             return const Padding(
               padding: EdgeInsets.symmetric(horizontal: 4),
-              child: CustomMovieImage(),
+              child:Text('data')
+              //  CustomMovieImage(movie: MovieEntity(id: 1),),
             );
           }),
     );

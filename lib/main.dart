@@ -36,14 +36,14 @@ class MovieApp extends StatelessWidget {
             FetchFeaturedMoviesUseCase(
               getIt.get<HomeRepoImpl>(),
             ),
-          );
+          )..fetchFeaturedMovies();
         }),
         BlocProvider(create: (context) {
           return NewestMoviesCubit(
             FetchNewestMoviesUseCase(
               getIt.get<HomeRepoImpl>(),
             ),
-          );
+          )..fetchNewestMovies();
         })
       ],
       child: MaterialApp.router(

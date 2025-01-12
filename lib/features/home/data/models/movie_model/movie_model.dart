@@ -21,7 +21,7 @@ class MovieModel extends MovieEntity {
     this.type,
   }) : super(
           id: imdbid!,
-          image: imageurl?[0] != null ? imageurl![0] : '',
+          image:  (imageurl!.isNotEmpty)? imageurl[0] : '',
           movieTitle: title!,
           kind: genre,
           releasedYear: released,
@@ -29,8 +29,8 @@ class MovieModel extends MovieEntity {
         );
 
   factory MovieModel.fromJson(Map<String, dynamic> json) => MovieModel(
-        imageurl: json['imageurl'] as List<String>?,
-        genre: json['genre'] as List<String>?,
+        imageurl: (json['imageurl'] as List<dynamic>?)?.map((imageUrl) => imageUrl.toString()).toList(),
+        genre: (json['genre'] as List<dynamic>?)?.map((genre) => genre.toString()).toList(),
         imdbid: json['imdbid'] as String?,
         title: json['title'] as String?,
         imdbrating: (json['imdbrating'] as num?)?.toDouble(),
