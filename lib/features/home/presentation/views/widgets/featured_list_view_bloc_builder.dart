@@ -4,6 +4,7 @@ import 'package:movie_app/core/utils/functions/error_snackbar.dart';
 import 'package:movie_app/features/home/domain/entities/movie_entity.dart';
 import 'package:movie_app/features/home/presentation/manager/cubits/featured_movies_cubit/featured_movies_cubit.dart';
 import 'package:movie_app/features/home/presentation/views/widgets/featured_list_view.dart';
+import 'package:movie_app/features/home/presentation/views/widgets/featured_list_view_loading_indicator.dart';
 
 class FeaturedListViewBlocConsumer extends StatefulWidget {
   const FeaturedListViewBlocConsumer({
@@ -44,7 +45,7 @@ class _FeaturedListViewBlocConsumerState
             style: const TextStyle(color: Colors.red),
           );
         } else {
-          return const CircularProgressIndicator();
+          return const FeaturedListViewLoadingIndicator();
         }
       },
     );

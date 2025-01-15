@@ -14,13 +14,12 @@ class _CustomFadingWidgetState extends State<CustomFadingWidget>
 
   @override
   void initState() {
-    animationController = AnimationController(vsync: this);
+    animationController = AnimationController(vsync: this,duration: const Duration(milliseconds: 800));
     animation = Tween<double>(begin: .2, end: .8).animate(animationController);
     animationController.addListener(() {
       setState(() {});
     });
     animationController.repeat(reverse: true);
-    // animationController.forward();
     super.initState();
   }
 

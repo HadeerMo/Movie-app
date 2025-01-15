@@ -42,11 +42,6 @@ class HomeViewBody extends StatelessWidget {
             child: NewestMoviesListBlocBuilder(),
           ),
         ),
-        // SliverToBoxAdapter(
-        //   child: SizedBox(
-        //           height:30,
-        //         ),
-        // )
       ],
     );
   }
