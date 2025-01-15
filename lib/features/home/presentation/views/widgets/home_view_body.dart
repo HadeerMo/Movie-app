@@ -21,7 +21,7 @@ class HomeViewBody extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 HomeCustomAppBar(),
-                FeaturedListViewBlocBuilder(),
+                FeaturedListViewBlocConsumer(),
                 SizedBox(
                   height: 40,
                 ),

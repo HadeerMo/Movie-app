@@ -12,18 +12,20 @@ class FeaturedMoviesCubit extends Cubit<FeaturedMoviesState> {
   final FetchFeaturedMoviesUseCase featuredMoviesUseCase;
 
   Future<void> fetchFeaturedMovies({int pageNum = 1}) async {
-    emit(FeaturedMoviesLoading());
-
+    if (pageNum == 1) {
+      emit(FeaturedMoviesLoading());
+    } else {
+      emit(FeaturedMoviesPaginationLoading());
+    }
     var result = await featuredMoviesUseCase.call(pageNum);
-
     result.fold((failure) {
-      emit(
-        FeaturedMoviesFailure(errMsg: failure.msg),
-      );
+      if (pageNum == 1) {
+        emit(FeaturedMoviesFailure(errMsg: failure.msg));
+      } else {
+        emit(FeaturedMoviesPaginationFailure(errMsg: failure.msg));
+      }
     }, (movies) {
-      emit(
-        FeaturedMoviesSuccess(movies: movies),
-      );
+      emit(FeaturedMoviesSuccess(movies: movies));
     });
   }
 }

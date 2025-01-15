@@ -17,11 +17,11 @@ class HomeRepoImpl extends HomeRepo {
   Future<Either<Failure, List<MovieEntity>>> fetchFeaturedMovies({int pageNum=1}) async {
     try {
       List<MovieEntity> movies;
-      movies = homeLocalDataSource.fetchFeaturedMovies();
+      movies = homeLocalDataSource.fetchFeaturedMovies(pageNum: pageNum);
       if (movies.isNotEmpty) {
         return Right(movies);
       }
-      movies = await homeRemoteDataSource.fetchFeaturedMovies();
+      movies = await homeRemoteDataSource.fetchFeaturedMovies(pageNum: pageNum);
       return Right(movies);
     } on Exception catch (e) {
       if (e is DioException) {
