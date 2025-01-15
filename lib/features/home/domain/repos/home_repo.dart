@@ -7,5 +7,5 @@ abstract class HomeRepo {
       {int pageNum = 1}); //unimplemented method
 
   Future<Either<Failure, List<MovieEntity>>>
-      fetchNewsMovies(); //unimplemented method
+      fetchNewsMovies({int pageNum = 1}); //unimplemented method
 }

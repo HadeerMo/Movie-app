@@ -11,18 +11,22 @@ class NewestMoviesCubit extends Cubit<NewestMoviesState> {
 
   final FetchNewestMoviesUseCase fetchNewestMoviesUseCase;
 
-  Future<void> fetchNewestMovies() async {
-    emit(NewestMoviesLoading());
+  Future<void> fetchNewestMovies({int pageNum = 1}) async {
+if (pageNum == 1) {
+      emit(NewestMoviesLoading());
+    } else {
+      emit(NewestMoviesPaginationLoading());
+    }
+    var result = await fetchNewestMoviesUseCase.call(pageNum);
 
-    var result = await fetchNewestMoviesUseCase.call();
     result.fold((failure) {
-      emit(
-        NewestMoviesFailure(errMsg: failure.msg),
-      );
+      if (pageNum == 1) {
+        emit(NewestMoviesFailure(errMsg: failure.msg));
+      } else {
+        emit(NewestMoviesPaginationFailure(errMsg: failure.msg));
+      }
     }, (movies) {
-      emit(
-        NewestMoviesSuccess(movies: movies),
-      );
+      emit(NewestMoviesSuccess(movies: movies));
     });
   }
 }

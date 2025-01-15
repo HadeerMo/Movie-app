@@ -32,14 +32,14 @@ class HomeRepoImpl extends HomeRepo {
   }
 
   @override
-  Future<Either<Failure, List<MovieEntity>>> fetchNewsMovies() async {
+  Future<Either<Failure, List<MovieEntity>>> fetchNewsMovies({int pageNum=1}) async {
     try {
       List<MovieEntity> movies;
-      movies = homeLocalDataSource.fetchNewsMovies();
+      movies = homeLocalDataSource.fetchNewsMovies(pageNum: pageNum);
       if (movies.isNotEmpty) {
         return Right(movies);
       }
-      movies = await homeRemoteDataSource.fetchNewsMovies();
+      movies = await homeRemoteDataSource.fetchNewsMovies(pageNum: pageNum);
       return Right(movies);
     } on Exception catch (e) {
       if (e is DioException) {

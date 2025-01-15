@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/core/widgets/custom_fading_widget.dart';
 import 'package:movie_app/features/home/presentation/views/widgets/custom_movie_image_loading_indicator.dart';
 
 class FeaturedListViewLoadingIndicator extends StatelessWidget {
