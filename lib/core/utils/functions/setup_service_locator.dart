@@ -4,6 +4,9 @@ import 'package:movie_app/core/utils/api_service.dart';
 import 'package:movie_app/features/home/data/data_sources/home_local_data_source.dart';
 import 'package:movie_app/features/home/data/data_sources/home_remote_data_source.dart';
 import 'package:movie_app/features/home/data/repos/home_repo_impl.dart';
+import 'package:movie_app/features/search/data/data_sources/search_local_data_source.dart';
+import 'package:movie_app/features/search/data/data_sources/search_remote_data_source.dart';
+import 'package:movie_app/features/search/data/repos/search_repo_impl.dart';
 
 final getIt = GetIt.instance;
 void setupServiceLocator() {
@@ -18,6 +21,15 @@ void setupServiceLocator() {
       homeLocalDataSource: HomeLocalDataSourceImpl(),
       homeRemoteDataSource: HomeRemoteDataSourceImpl(
         getIt.get<ApiService>(),
+      ),
+    ),
+  );
+
+  getIt.registerSingleton<SearchRepoImpl>(
+    SearchRepoImpl(
+      searchLocalDataSource: SearchLocalDataSourceImpl(),
+      searchRemoteDataSource: SearchRemoteDataSourseImpl(
+        apiService: getIt.get<ApiService>(),
       ),
     ),
   );

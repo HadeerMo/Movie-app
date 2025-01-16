@@ -1,4 +1,4 @@
-import 'package:movie_app/features/home/domain/entities/movie_entity.dart';
+import 'package:movie_app/core/entities/movie_entity.dart';
 
 class MovieModel extends MovieEntity {
   List<String>? imageurl;

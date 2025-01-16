@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:movie_app/constants.dart';
 import 'package:movie_app/core/utils/app_router.dart';
 import 'package:movie_app/core/utils/styles.dart';
-import 'package:movie_app/features/home/domain/entities/movie_entity.dart';
+import 'package:movie_app/core/entities/movie_entity.dart';
 import 'package:movie_app/features/home/presentation/views/widgets/movie_rating.dart';
 
 class MovieListViewItem extends StatelessWidget {

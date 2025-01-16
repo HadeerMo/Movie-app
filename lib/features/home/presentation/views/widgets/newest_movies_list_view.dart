@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_app/features/home/domain/entities/movie_entity.dart';
+import 'package:movie_app/core/entities/movie_entity.dart';
 import 'package:movie_app/features/home/presentation/manager/cubits/newest_movies_cubit/newest_movies_cubit.dart';
 import 'package:movie_app/features/home/presentation/views/widgets/movie_item.dart';
 
@@ -51,7 +51,7 @@ class _NewestMoviesListState extends State<NewestMoviesList> {
     return ListView.builder(
       controller: _scrollController,
       padding: EdgeInsets.zero,
-      // physics: const NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       itemCount: widget.movies.length,
       itemBuilder: (context, index) {
         return MovieListViewItem(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_app/features/home/domain/entities/movie_entity.dart';
+import 'package:movie_app/core/entities/movie_entity.dart';
 import 'package:movie_app/features/home/presentation/manager/cubits/featured_movies_cubit/featured_movies_cubit.dart';
 import 'package:movie_app/features/home/presentation/views/widgets/custom_featured_list_view_item.dart';
 

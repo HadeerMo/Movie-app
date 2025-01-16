@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:movie_app/features/home/domain/entities/movie_entity.dart';
+import 'package:movie_app/core/entities/movie_entity.dart';
 import 'package:movie_app/features/home/domain/use_cases/fetch_newest_movies_use_case.dart';
 
 part 'newest_movies_state.dart';

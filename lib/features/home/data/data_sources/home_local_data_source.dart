@@ -1,6 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:movie_app/constants.dart';
-import 'package:movie_app/features/home/domain/entities/movie_entity.dart';
+import 'package:movie_app/core/entities/movie_entity.dart';
 
 abstract class HomeLocalDataSource {
   List<MovieEntity> fetchFeaturedMovies(

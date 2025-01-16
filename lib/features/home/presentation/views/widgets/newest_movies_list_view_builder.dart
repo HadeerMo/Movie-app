@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_app/features/home/domain/entities/movie_entity.dart';
+import 'package:movie_app/core/entities/movie_entity.dart';
 import 'package:movie_app/features/home/presentation/manager/cubits/newest_movies_cubit/newest_movies_cubit.dart';
+import 'package:movie_app/features/home/presentation/views/widgets/newest_movies_list_view_loading_indicator.dart';
 
 import 'newest_movies_list_view.dart';
 
@@ -28,15 +29,15 @@ class _NewestMoviesListBlocBuilderState
       },
       builder: (context, state) {
         if (state is NewestMoviesSuccess ||
-        state is NewestMoviesPaginationLoading ||
-        state is NewestMoviesPaginationFailure) {
+            state is NewestMoviesPaginationLoading ||
+            state is NewestMoviesPaginationFailure) {
           return NewestMoviesList(
             movies: allMovies,
           );
         } else if (state is NewestMoviesFailure) {
           return Text(state.errMsg);
         } else {
-          return const CircularProgressIndicator();
+          return const NewestMoviesListViewLoadingIndecator();
         }
       },
     );

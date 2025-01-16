@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:movie_app/core/error/failure.dart';
 import 'package:movie_app/core/use_cases/use_case.dart';
-import 'package:movie_app/features/home/domain/entities/movie_entity.dart';
+import 'package:movie_app/core/entities/movie_entity.dart';
 import 'package:movie_app/features/home/domain/repos/home_repo.dart';
 
 class FetchFeaturedMoviesUseCase extends UseCase<List<MovieEntity>, int> {
