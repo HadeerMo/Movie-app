@@ -20,7 +20,7 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: detailsPath,
-        builder: (context, state) => const MovieDetailsView(),
+        builder: (context, state) => MovieDetailsView(state: state,),
       ),
       GoRoute(
         path: searchPath,

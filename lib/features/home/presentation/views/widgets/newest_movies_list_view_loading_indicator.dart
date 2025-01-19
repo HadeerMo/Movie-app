@@ -15,6 +15,5 @@ class NewestMoviesListViewLoadingIndecator extends StatelessWidget {
         },
       ),
     );
-    ;
   }
 }

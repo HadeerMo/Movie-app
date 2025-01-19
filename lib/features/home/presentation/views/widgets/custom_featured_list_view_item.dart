@@ -13,7 +13,7 @@ class CustomFeaturedListViewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(AppRouter.detailsPath);
+        GoRouter.of(context).push(AppRouter.detailsPath,extra: movie);
       },
       child: Stack(
         children: [

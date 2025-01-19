@@ -4,9 +4,9 @@ import 'package:movie_app/features/home/presentation/views/widgets/more_movie_li
 
 class MoreMovieSection extends StatelessWidget {
   const MoreMovieSection({
-    super.key,
+    super.key, required this.genre,
   });
-
+  final String genre;
   @override
   Widget build(BuildContext context) {
     return Column(

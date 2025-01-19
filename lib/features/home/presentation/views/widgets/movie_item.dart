@@ -16,7 +16,7 @@ class MovieListViewItem extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 20),
       child: GestureDetector(
         onTap: () {
-          GoRouter.of(context).push(AppRouter.detailsPath);
+          GoRouter.of(context).push(AppRouter.detailsPath,extra: movie);
         },
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
