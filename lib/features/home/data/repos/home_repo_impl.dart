@@ -14,7 +14,8 @@ class HomeRepoImpl extends HomeRepo {
       {required this.homeRemoteDataSource, required this.homeLocalDataSource});
 
   @override
-  Future<Either<Failure, List<MovieEntity>>> fetchFeaturedMovies({int pageNum=1}) async {
+  Future<Either<Failure, List<MovieEntity>>> fetchFeaturedMovies(
+      {int pageNum = 1}) async {
     try {
       List<MovieEntity> movies;
       movies = homeLocalDataSource.fetchFeaturedMovies(pageNum: pageNum);
@@ -32,7 +33,8 @@ class HomeRepoImpl extends HomeRepo {
   }
 
   @override
-  Future<Either<Failure, List<MovieEntity>>> fetchNewsMovies({int pageNum=1}) async {
+  Future<Either<Failure, List<MovieEntity>>> fetchNewsMovies(
+      {int pageNum = 1}) async {
     try {
       List<MovieEntity> movies;
       movies = homeLocalDataSource.fetchNewsMovies(pageNum: pageNum);
@@ -40,6 +42,26 @@ class HomeRepoImpl extends HomeRepo {
         return Right(movies);
       }
       movies = await homeRemoteDataSource.fetchNewsMovies(pageNum: pageNum);
+      return Right(movies);
+    } on Exception catch (e) {
+      if (e is DioException) {
+        return Left(ServerFailure.fromDioError(e));
+      }
+      return Left(ServerFailure(msg: e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<MovieEntity>>> fetchMoreSimilarMovies(
+      {int pageNum = 1, required String gener}) async {
+    try {
+      List<MovieEntity> movies;
+      movies = homeLocalDataSource.fetchMoreSimilarMovies(
+          pageNum: pageNum, gener: gener);
+      if (movies.isEmpty) {
+        movies = await homeRemoteDataSource.fetchMoreSimialMovies(
+            pageNum: pageNum, gener: gener);
+      }
       return Right(movies);
     } on Exception catch (e) {
       if (e is DioException) {

@@ -1,10 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_app/constants.dart';
 import 'package:movie_app/core/utils/app_router.dart';
 import 'package:movie_app/core/utils/styles.dart';
 import 'package:movie_app/core/entities/movie_entity.dart';
+import 'package:movie_app/features/home/presentation/manager/cubits/more_samilar_cubit/more_samilar_cubit.dart';
 import 'package:movie_app/features/home/presentation/views/widgets/movie_rating.dart';
 
 class MovieListViewItem extends StatelessWidget {
@@ -16,7 +18,7 @@ class MovieListViewItem extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: 20),
       child: GestureDetector(
         onTap: () {
-          GoRouter.of(context).push(AppRouter.detailsPath,extra: movie);
+          GoRouter.of(context).push(AppRouter.detailsPath, extra: movie);
         },
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,

@@ -24,9 +24,9 @@ class MovieDetailsBody extends StatelessWidget {
                 const SizedBox(
                   height: 12,
                 ),
-                const MovieRate(
+                MovieRate(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  rate: 0,
+                  rate: movie.rating??0,
                 ),
                 const SizedBox(
                   height: 30,
@@ -38,7 +38,7 @@ class MovieDetailsBody extends StatelessWidget {
                     height: 30,
                   ),
                 ),
-                MoreMovieSection(genre:movie.kind![0]), //must be in the bottom of screan
+                const MoreMovieSection(), //must be in the bottom of screan
                 const SizedBox(
                   height: 20,
                 ),

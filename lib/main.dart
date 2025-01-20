@@ -23,6 +23,7 @@ void main() async {
   await Hive.openBox<MovieEntity>(kfeaturedBox);
   await Hive.openBox<MovieEntity>(kNewestBox);
   await Hive.openBox<MovieEntity>(kSearchBox);
+  await Hive.openBox<MovieEntity>(kMoreSimilarBox);
   Bloc.observer = SimpleBlocObserver();
   runApp(const MovieApp());
 }

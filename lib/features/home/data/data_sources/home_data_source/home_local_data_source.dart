@@ -7,6 +7,8 @@ abstract class HomeLocalDataSource {
       {int pageNum = 1}); //unimplemented method
 
   List<MovieEntity> fetchNewsMovies({int pageNum = 1}); //unimplemented method
+  List<MovieEntity> fetchMoreSimilarMovies(
+      {int pageNum = 1, required String gener}); //unimplemented method
 }
 
 class HomeLocalDataSourceImpl extends HomeLocalDataSource {
@@ -22,7 +24,7 @@ class HomeLocalDataSourceImpl extends HomeLocalDataSource {
     }
     if (endIndex > length) {
       //(endIndex > length) => check that as if the chashed list from (0 to 70) and startIndex = 50, endIndex = 100 "that will throw exeption when i return sublist(50,100)"
-      endIndex == length; 
+      endIndex = length;
     }
     return box.values
         .toList()
@@ -41,10 +43,26 @@ class HomeLocalDataSourceImpl extends HomeLocalDataSource {
     }
     if (endIndex > length) {
       //(endIndex > length) => check that as if the chashed list from (0 to 70) and startIndex = 50, endIndex = 100 "that will throw exeption when i return sublist(50,100)"
-      endIndex == length; 
+      endIndex = length;
     }
     return box.values
         .toList()
         .sublist(startIndex, endIndex); //(0:49), (50:99), (100:149), ...
+  }
+
+  @override
+  List<MovieEntity> fetchMoreSimilarMovies(
+      {int pageNum = 1, required String gener}) {
+    int startIndex = (pageNum - 1) * 50;
+    int endIndex = pageNum * 50;
+    var box = Hive.box<MovieEntity>(kMoreSimilarBox);
+    int length = box.values.length;
+    if (startIndex >= length) {
+      return [];
+    }
+    if (endIndex > length) {
+      endIndex = length;
+    }
+    return box.values.toList().sublist(startIndex, endIndex);
   }
 }

@@ -1,23 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_app/core/utils/app_router.dart';
 import 'package:movie_app/core/entities/movie_entity.dart';
+import 'package:movie_app/features/home/presentation/manager/cubits/more_samilar_cubit/more_samilar_cubit.dart';
 import 'package:movie_app/features/home/presentation/views/widgets/custom_movie_image.dart';
 
 class CustomFeaturedListViewItem extends StatelessWidget {
   const CustomFeaturedListViewItem({
-    super.key, required this.movie,
+    super.key,
+    required this.movie,
   });
   final MovieEntity movie;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(AppRouter.detailsPath,extra: movie);
+        GoRouter.of(context).push(AppRouter.detailsPath, extra: movie);
       },
       child: Stack(
         children: [
-          CustomMovieImage(movie: movie,),
+          CustomMovieImage(
+            movie: movie,
+          ),
           const Positioned(
             bottom: 7,
             right: 7,

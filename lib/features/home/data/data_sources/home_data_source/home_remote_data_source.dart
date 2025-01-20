@@ -5,9 +5,14 @@ import 'package:movie_app/core/utils/functions/save_box.dart';
 import 'package:movie_app/core/entities/movie_entity.dart';
 
 abstract class HomeRemoteDataSource {
-  Future<List<MovieEntity>> fetchFeaturedMovies({int pageNum = 1}); //unimplemented method
+  Future<List<MovieEntity>> fetchFeaturedMovies(
+      {int pageNum = 1}); //unimplemented method
 
-  Future<List<MovieEntity>> fetchNewsMovies({int pageNum = 1}); //unimplemented method
+  Future<List<MovieEntity>> fetchNewsMovies(
+      {int pageNum = 1}); //unimplemented method
+
+  Future<List<MovieEntity>> fetchMoreSimialMovies(
+      {int pageNum = 1, required String gener}); //unimplemented method
 }
 
 class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
@@ -16,7 +21,7 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
   HomeRemoteDataSourceImpl(this.apiService);
 
   @override
-  Future<List<MovieEntity>> fetchFeaturedMovies({int pageNum =1}) async {
+  Future<List<MovieEntity>> fetchFeaturedMovies({int pageNum = 1}) async {
     var data = await apiService.get(
         endPoint:
             'advancedsearch?start_year=1970&end_year=2019&min_imdb=1&max_imdb=10&language=english&sort=latest&page=$pageNum');
@@ -26,7 +31,7 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
   }
 
   @override
-  Future<List<MovieEntity>> fetchNewsMovies({int pageNum =1}) async {
+  Future<List<MovieEntity>> fetchNewsMovies({int pageNum = 1}) async {
     var data = await apiService.get(
         endPoint:
             'advancedsearch?start_year=2020&end_year=2020&min_imdb=1&max_imdb=10&language=english&sort=latest&page=$pageNum');
@@ -35,5 +40,14 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
     return movies;
   }
 
-
+  @override
+  Future<List<MovieEntity>> fetchMoreSimialMovies(
+      {int pageNum = 1, required String gener}) async {
+    var data = await apiService.get(
+        endPoint:
+            'advancedsearch?start_year=1970&end_year=2020&min_imdb=1&max_imdb=10&genre=$gener&type=movie&sort=latest&page=$pageNum');
+    List<MovieEntity> movies = getMoviesList(data);
+    saveBoxData(movies, kMoreSimilarBox);
+    return movies;
+  }
 }

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/core/utils/styles.dart';
-import 'package:movie_app/features/home/presentation/views/widgets/more_movie_list_view.dart';
+import 'package:movie_app/features/home/presentation/views/widgets/more_movies_list_bloc_consumer.dart';
 
 class MoreMovieSection extends StatelessWidget {
   const MoreMovieSection({
-    super.key, required this.genre,
+    super.key,
   });
-  final String genre;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -19,8 +19,10 @@ class MoreMovieSection extends StatelessWidget {
         const SizedBox(
           height: 16,
         ),
-        const MoreMovieListView(),
+        const MoreMoviesListBlocConsumer(),
       ],
     );
   }
 }
+
+

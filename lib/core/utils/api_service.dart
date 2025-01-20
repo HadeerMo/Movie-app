@@ -11,7 +11,7 @@ class ApiService {
       '$baseUrl$endPoint',
       options: Options(
         headers: {
-          "x-rapidapi-key":"d20ebc8e9dmsh33c7d333552f8b4p16e489jsnc3f3357da4b0",
+          "x-rapidapi-key":"324483c7fcmsh5b3f843fb69ca12p117511jsn9dee2f2f1b22",
         },
       ),
     );
