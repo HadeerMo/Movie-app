@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_app/core/utils/app_router.dart';
 import 'package:movie_app/core/entities/movie_entity.dart';
-import 'package:movie_app/features/home/presentation/manager/cubits/more_samilar_cubit/more_samilar_cubit.dart';
 import 'package:movie_app/features/home/presentation/views/widgets/custom_movie_image.dart';
 
 class CustomFeaturedListViewItem extends StatelessWidget {

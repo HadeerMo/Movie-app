@@ -11,9 +11,6 @@ class MoreMoviesListBlocConsumer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MoreSamilarCubit, MoreSamilarState>(
-      // listener: (context, state) {
-      //   // TODO: implement listener
-      // },
       builder: (context, state) {
         if (state is MoreSamilarSuccess) {
           return MoreMovieListView(
@@ -22,7 +19,7 @@ class MoreMoviesListBlocConsumer extends StatelessWidget {
         } else if (state is MoreSamilarFailure) {
           return ErrorWidget(state.errMsg);
         } else {
-          return CircularProgressIndicator();
+          return const CircularProgressIndicator();
         }
       },
     );
